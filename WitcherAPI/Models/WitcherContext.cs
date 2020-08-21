@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WitcherAPI.Models
 {
@@ -11,9 +7,13 @@ namespace WitcherAPI.Models
         public WitcherContext(DbContextOptions<WitcherContext> options)
             :base(options)
         {
-
         }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
         public DbSet<Character> Characters { get; set; }
+
+
     }
 }
