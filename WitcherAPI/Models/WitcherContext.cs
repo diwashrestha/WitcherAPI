@@ -8,12 +8,12 @@ namespace WitcherAPI.Models
             :base(options)
         {
         }
+
+        public DbSet<Character> Characters { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seed();
         }
-        public DbSet<Character> Characters { get; set; }
-
 
     }
 }

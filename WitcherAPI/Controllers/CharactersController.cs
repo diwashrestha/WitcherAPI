@@ -18,6 +18,7 @@ namespace WitcherAPI.Controllers
         public CharactersController(WitcherContext context)
         {
             _context = context;
+            _context.Database.EnsureCreated();
         }
 
         // GET: api/Characters
