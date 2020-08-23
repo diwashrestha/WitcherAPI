@@ -1,5 +1,5 @@
 # Witcher API
-![](witcher_api.png)
+![witcher](witcher_api.png)
 Rest API  for the Witcher 3 🕹Game Created by [CDProjekt Red](https://en.cdprojektred.com/) . This API catalogs the 
 * character 
 * locations 
