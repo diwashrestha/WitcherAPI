@@ -1,34 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WitcherAPI.Models;
 
+
+// Controller for the characters
 namespace WitcherAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CharactersController : ControllerBase
+    public class CharacterController : ControllerBase
     {
         private readonly WitcherContext _context;
 
-        public CharactersController(WitcherContext context)
+        public CharacterController(WitcherContext context)
         {
             _context = context;
             _context.Database.EnsureCreated();
         }
 
-        // GET: api/Characters
+        // GET: /Characters
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
+        public async Task<IActionResult> GetAllCharacters()
         {
-            return await _context.Characters.ToListAsync();
+            IQueryable<Character> characters = _context.Characters;
+            return Ok(await characters.ToArrayAsync());
         }
 
-        // GET: api/Characters/5
+        // GET: /Characters/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Character>> GetCharacter(int id)
         {
@@ -42,7 +42,7 @@ namespace WitcherAPI.Controllers
             return character;
         }
 
-        // PUT: api/Characters/5
+        // PUT: /Characters/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
