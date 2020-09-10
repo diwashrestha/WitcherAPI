@@ -2,9 +2,9 @@
 
 namespace WitcherAPI.Models
 {
-    public class WitcherContext :DbContext
+    public class WitcherDbContext :DbContext
     {
-        public WitcherContext(DbContextOptions<WitcherContext> options)
+        public WitcherDbContext(DbContextOptions<WitcherDbContext> options)
             :base(options)
         {
         }

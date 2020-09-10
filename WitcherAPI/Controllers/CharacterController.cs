@@ -12,9 +12,9 @@ namespace WitcherAPI.Controllers
     [ApiController]
     public class CharacterController : ControllerBase
     {
-        private readonly WitcherContext _context;
+        private readonly WitcherDbContext _context;
 
-        public CharacterController(WitcherContext context)
+        public CharacterController(WitcherDbContext context)
         {
             _context = context;
             _context.Database.EnsureCreated();

@@ -20,6 +20,5 @@ namespace WitcherAPI.Models
         public string[] Abilities { get; set; }
         public string Profession { get; set; }
         public string Description { get; set; }
-        public int Id { get; internal set; }
     }
 }
