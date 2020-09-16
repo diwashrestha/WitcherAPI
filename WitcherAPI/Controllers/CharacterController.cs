@@ -20,7 +20,7 @@ namespace WitcherAPI.Controllers
             _context.Database.EnsureCreated();
         }
 
-        // GET: /Characters
+        // GET: /Character
         [HttpGet]
         public async Task<IActionResult> GetAllCharacters()
         {
@@ -28,7 +28,7 @@ namespace WitcherAPI.Controllers
             return Ok(await characters.ToArrayAsync());
         }
 
-        // GET: /Characters/5
+        // GET: /Character/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Character>> GetCharacter(int id)
         {
