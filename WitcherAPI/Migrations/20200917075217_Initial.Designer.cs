@@ -9,8 +9,8 @@ using WitcherAPI.Models;
 namespace WitcherAPI.Migrations
 {
     [DbContext(typeof(WitcherDbContext))]
-    [Migration("20200916071840_IntialData")]
-    partial class IntialData
+    [Migration("20200917075217_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,9 @@ namespace WitcherAPI.Migrations
                     b.Property<string>("HairColor")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -68,17 +71,17 @@ namespace WitcherAPI.Migrations
                         new
                         {
                             CharacterId = 1,
-                            Abilities = "null",
+                            Abilities = "Swordsmanship, Alchemy, Signs ",
                             Alias = "null",
-                            Description = "Emhyr var Emreis, Deithwen Addan yn Carn aep Morvudd (Nilfgaardian language: The White Flame Dancing on the Barrows of his Enemies), also known to a few under his alias as Duny, the Urcheon of Erlenwald  was Emperor of the Nilfgaardian Empire, Lord of Metinna, Ebbing, Gemmera, and Sovereign of Nazair and Vicovaro from 1257 until his death sometime in the late 13th century. He also became the King of Cintra after marrying Cirilla in 1268. His rule of Nilfgaard was highly aggressive, often pursuing expansionist policies similar to those of his predecessors. This led to the outbreak of two wars against the Northern Kingdoms, both of which he lost. Emhyr var Emreis was an intelligent and brilliant ruler. He chose his people well and crushed many plots against him. He was ruthless toward traitors and moved towards his goals with great determination.He was publicly favorable to the Elder Races, in stark contrast to monarchs of the North.",
-                            EyeColor = "Brown",
+                            Description = "Geralt of Rivia was a legendary witcher of the School of the Wolf active throughout the 13th century. He loved the sorceress Yennefer, considered the love of his life despite their tumultuous relationship, and became Ciri's adoptive father. During the Trial of the Grasses, Geralt exhibited unusual tolerance for the mutagens that grant witchers their abilities. Accordingly, Geralt was subjected to further experimental mutagens which rendered his hair white and may have given him greater speed, strength, and stamina than his fellow witchers.  Despite his title, Geralt did not hail from the city of Rivia. After being left with the witchers by his mother, Visenna, he grew up in their keep of Kaer Morhen in the realm of Kaedwen. In the interest of appearing more trustworthy to potential clients, young witchers were encouraged to make up surnames for themselves by master Vesemir. As his first choice, Geralt chose Geralt Roger Eric du Haute - Bellegarde, but this choice was dismissed by Vesemir as silly and pretentious, so Geralt was all that remained of his chosen name. Of Rivia was a more practical alternative and Geralt even went so far as to adopt a Rivian accent to appear more authentic. Later, Queen Meve of Lyria knighted him for his valor in the Battle for the Bridge on the Yaruga conferring on him the formal title of Rivia, which amused him.[1] He, therefore, became a true knight.",
+                            EyeColor = "Amber",
                             Gender = "Male",
-                            HairColor = "Black",
-                            Name = "Emhyr var Emreis",
-                            Nationality = "Nelfgardian",
-                            Profession = "Emperor of Nilfgaard",
+                            HairColor = "Milk White",
+                            ImageUrl = "https://github.com/diwashrestha/WitcherAPI/blob/master/image/character/Geralt_of_Rivia.png",
+                            Name = "Geralt of Revia",
+                            Profession = "Witcher",
                             Race = "Human",
-                            Titles = "null"
+                            Titles = "Knight"
                         });
                 });
 #pragma warning restore 612, 618
