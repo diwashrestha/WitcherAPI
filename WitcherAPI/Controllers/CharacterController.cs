@@ -34,14 +34,41 @@ namespace WitcherAPI.Controllers
                     c => c.Name.ToLower().Contains(queryParameters.Name.ToLower()));
             }
 
-            // sorting the results
-            if(!string.IsNullOrEmpty(queryParameters.SortBy))
+            // filter character based on the eyecolor
+            if(!string.IsNullOrEmpty(queryParameters.EyeColor))
             {
-                if(typeof(Character).GetProperty(queryParameters.SortBy) != null)
-                {
-                    characters = characters.OrderByCustom(queryParameters.SortBy, queryParameters.SortOrder);
-                }
+                characters = characters.Where(
+                    c => c.EyeColor == queryParameters.EyeColor);
             }
+
+            // filter character based on the haircolor
+            if(!string.IsNullOrEmpty(queryParameters.HairColor))
+            {
+                characters = characters.Where(
+                    c => c.HairColor == queryParameters.HairColor);
+            }
+
+            // filter character based on the gender
+            if(!string.IsNullOrEmpty(queryParameters.Gender))
+            {
+                characters = characters.Where(
+                    c => c.Gender == queryParameters.Gender);
+            }
+
+                        // sorting the results
+                        if(!string.IsNullOrEmpty(queryParameters.SortBy))
+                        {
+                            if(typeof(Character).GetProperty(queryParameters.SortBy) != null)
+                            {
+                                characters = characters.OrderByCustom(queryParameters.SortBy, queryParameters.SortOrder);
+                            }
+                        }
+            /*
+            // pagination
+            characters = characters
+                .Skip(queryParameters.Size * (queryParameters.Page - 1))
+                .Take(queryParameters.Size);
+*/
             return Ok(await characters.ToArrayAsync());
         }
 
@@ -58,8 +85,5 @@ namespace WitcherAPI.Controllers
 
             return character;
         }
-
-
-
     }
 }

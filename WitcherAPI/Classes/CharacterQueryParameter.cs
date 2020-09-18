@@ -13,5 +13,6 @@ namespace WitcherAPI.Classes
         public string EyeColor { get; set; }
         public string Alias { get; set; }
         public string Titles { get; set; }
+        public string Gender { get; set; }
     }
 }

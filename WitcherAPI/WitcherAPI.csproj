@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="3.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="3.1.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.1" />
   </ItemGroup>
 
 
