@@ -7,7 +7,7 @@ namespace WitcherAPI.Models
 {
     public class Character
     {
-        public int CharacterId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public string Alias { get; set; }

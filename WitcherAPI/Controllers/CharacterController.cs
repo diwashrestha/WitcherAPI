@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WitcherAPI.Classes;
 using WitcherAPI.Models;
 
 
@@ -22,9 +23,25 @@ namespace WitcherAPI.Controllers
 
         // GET: /Character
         [HttpGet]
-        public async Task<IActionResult> GetAllCharacters()
+        public async Task<IActionResult> GetAllCharacters([FromQuery] CharacterQueryParameters queryParameters)
         {
             IQueryable<Character> characters = _context.Characters;
+
+            // filter character based on the name
+            if(!string.IsNullOrEmpty(queryParameters.Name))
+            {
+                characters = characters.Where(
+                    c => c.Name.ToLower().Contains(queryParameters.Name.ToLower()));
+            }
+
+            // sorting the results
+            if(!string.IsNullOrEmpty(queryParameters.SortBy))
+            {
+                if(typeof(Character).GetProperty(queryParameters.SortBy) != null)
+                {
+                    characters = characters.OrderByCustom(queryParameters.SortBy, queryParameters.SortOrder);
+                }
+            }
             return Ok(await characters.ToArrayAsync());
         }
 
@@ -41,5 +58,8 @@ namespace WitcherAPI.Controllers
 
             return character;
         }
+
+
+
     }
 }
