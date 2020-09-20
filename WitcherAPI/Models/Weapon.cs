@@ -7,13 +7,14 @@ namespace WitcherAPI.Models
 {
     public class Weapon
     {
-        public int WeaponId { get; set; }
-        public string WeaponName { get; set; }
-        public string WeaponUrl { get; set; }
-        public string WeaponCategory { get; set; }
-        public string WeaponType { get; set; }
-        public int WeaponPrice { get; set; }
-        public int WeaponWeight { get; set; }
-        public string[] WeaponEffects { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public string Type { get; set; }
+        public string Damage { get; set; }
+        public string Effects { get; set; }
+        public float Weight { get; set; }
+        public int Price { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

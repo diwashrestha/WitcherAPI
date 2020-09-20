@@ -27,48 +27,49 @@ namespace WitcherAPI.Controllers
         {
             IQueryable<Character> characters = _context.Characters;
 
-            // filter character based on the name
+
+            if(!string.IsNullOrEmpty(queryParameters.Gender))
+            {
+                characters = characters.Where(c => c.Gender == queryParameters.Gender);
+            }
+
+
+            if(!string.IsNullOrEmpty(queryParameters.Race))
+            {
+                characters = characters.Where(c => c.Race == queryParameters.Race);
+            }
+
             if(!string.IsNullOrEmpty(queryParameters.Name))
             {
                 characters = characters.Where(
                     c => c.Name.ToLower().Contains(queryParameters.Name.ToLower()));
             }
 
-            // filter character based on the eyecolor
             if(!string.IsNullOrEmpty(queryParameters.EyeColor))
             {
-                characters = characters.Where(
-                    c => c.EyeColor == queryParameters.EyeColor);
+                characters = characters.Where(c => c.EyeColor == queryParameters.EyeColor);
             }
 
-            // filter character based on the haircolor
             if(!string.IsNullOrEmpty(queryParameters.HairColor))
             {
-                characters = characters.Where(
-                    c => c.HairColor == queryParameters.HairColor);
+                characters = characters.Where(c => c.HairColor == queryParameters.HairColor);
             }
 
-            // filter character based on the gender
-            if(!string.IsNullOrEmpty(queryParameters.Gender))
+
+            // when page is not set it takes negative value which will give error
+            // So,when page is negative , send 15 characters
+            if(queryParameters.Page <=0)
             {
-                characters = characters.Where(
-                    c => c.Gender == queryParameters.Gender);
+                characters = characters
+                    .Skip(0).Take(15);
             }
-
-                        // sorting the results
-                        if(!string.IsNullOrEmpty(queryParameters.SortBy))
-                        {
-                            if(typeof(Character).GetProperty(queryParameters.SortBy) != null)
-                            {
-                                characters = characters.OrderByCustom(queryParameters.SortBy, queryParameters.SortOrder);
-                            }
-                        }
-            /*
-            // pagination
-            characters = characters
-                .Skip(queryParameters.Size * (queryParameters.Page - 1))
-                .Take(queryParameters.Size);
-*/
+            else
+            {
+                // using pagination
+                characters = characters
+                    .Skip(queryParameters.Size * (queryParameters.Page - 1))
+                    .Take(queryParameters.Size);
+            }
             return Ok(await characters.ToArrayAsync());
         }
 

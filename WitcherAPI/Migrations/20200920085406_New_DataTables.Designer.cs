@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WitcherAPI.Models;
 
 namespace WitcherAPI.Migrations
 {
     [DbContext(typeof(WitcherDbContext))]
-    partial class WitcherDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200920085406_New_DataTables")]
+    partial class New_DataTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

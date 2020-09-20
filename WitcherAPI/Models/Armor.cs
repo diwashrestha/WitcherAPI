@@ -7,13 +7,15 @@ namespace WitcherAPI.Models
 {
     public class Armor
     {
-        public int ArmorId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
+        public string Type { get; set; }
+        public string Category { get; set; }
+        public string Protection { get; set; }
+        public string Effects { get; set; }
+        public float Weight { get; set; }
+        public int Price { get; set; }
         public string ImageUrl { get; set; }
-        public string ArmorType { get; set; }
-        public string ArmorCategory { get; set; }
-        public int ArmorPrice { get; set; }
-        public int ArmorWeight { get; set; }
-        public string[] ArmorEffects { get; set; }
+
     }
 }

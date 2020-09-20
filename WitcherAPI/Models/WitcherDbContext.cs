@@ -10,6 +10,9 @@ namespace WitcherAPI.Models
         }
 
         public DbSet<Character> Characters { get; set; }
+        public DbSet<Monster> Monsters { get; set; }
+        public DbSet<Armor> Armors { get; set; }
+        public DbSet<Weapon> Weapons { get;set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seed();
