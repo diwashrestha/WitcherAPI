@@ -19,6 +19,12 @@ namespace WitcherAPI.Controllers
             _context.Database.EnsureCreated();
         }
 
+        /// <summary>
+        /// Get all Armor
+        /// </summary>
+        /// <param name="queryParameters"></param>
+        /// <returns></returns>
+
         // GET: / Armor
         [HttpGet]
         public async Task<IActionResult> GetAllArmors([FromQuery] ArmorQueryParameters queryParameters)
@@ -49,21 +55,23 @@ namespace WitcherAPI.Controllers
                 }
             }
 
-            if(queryParameters.Page <= 0)
-            {
-                armors = armors
-                    .Skip(0).Take(15);
-            }
-            else
+            if(queryParameters.Page > 0)
             {
                 armors = armors
                     .Skip(queryParameters.Size * (queryParameters.Page - 1))
                     .Take(queryParameters.Size);
+
             }
+
             return Ok(await armors.ToArrayAsync());
         }
 
 
+        /// <summary>
+        /// Get a Armor data using id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: /Armor/4
         [HttpGet("{id}")]
         public async Task<ActionResult<Armor>> GetArmor(int id)

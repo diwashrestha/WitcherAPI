@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WitcherAPI</name>
+    </assembly>
+    <members>
+        <member name="M:WitcherAPI.Controllers.ArmorController.GetAllArmors(WitcherAPI.Classes.ArmorQueryParameters)">
+            <summary>
+            Get a Armor data without any argument
+            </summary>
+            <param name="queryParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WitcherAPI.Controllers.ArmorController.GetArmor(System.Int32)">
+            <summary>
+            Get Armor data using an integer as an argument
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WitcherAPI.Controllers.CharacterController.GetAllCharacters(WitcherAPI.Classes.CharacterQueryParameters)">
+            <summary>
+            Get Characters
+            </summary>
+            <param name="queryParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WitcherAPI.Controllers.CharacterController.GetCharacter(System.Int32)">
+            <summary>
+            Get a Character using a integer as an argument
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WitcherAPI.Controllers.MonsterController.GetAllMonsters(WitcherAPI.Classes.MonsterQueryParameters)">
+            <summary>
+            Get Monsters data
+            </summary>
+            <param name="queryParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WitcherAPI.Controllers.MonsterController.GetMonster(System.Int32)">
+            <summary>
+            Get a Monster using a integer as argument
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WitcherAPI.Controllers.WeaponController.GetAllWeapons(WitcherAPI.Classes.WeaponQueryParameters)">
+            <summary>
+            Get weapons 
+            </summary>
+            <param name="queryParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WitcherAPI.Controllers.WeaponController.GetWeapon(System.Int32)">
+            <summary>
+            Get a Weapon using integer as argument
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

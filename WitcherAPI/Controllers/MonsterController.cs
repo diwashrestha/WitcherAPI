@@ -20,6 +20,11 @@ namespace WitcherAPI.Controllers
         }
 
 
+        /// <summary>
+        /// Get all Monsters
+        /// </summary>
+        /// <param name="queryParameters"></param>
+        /// <returns></returns>
         // GET: /Monster
         [HttpGet]
         public  async Task<IActionResult> GetAllMonsters([FromQuery] MonsterQueryParameters queryParameters)
@@ -50,22 +55,23 @@ namespace WitcherAPI.Controllers
             }
 
 
-            if(queryParameters.Page <= 0)
-            {
-                monsters = monsters
-                    .Skip(0).Take(15);
-            }
-            else
+            if(queryParameters.Page > 0)
             {
                 // using pagination
                 monsters = monsters
                     .Skip(queryParameters.Size * (queryParameters.Page - 1))
                     .Take(queryParameters.Size);
-            }
 
+            }
 
             return Ok(await monsters.ToArrayAsync());
         }
+
+        /// <summary>
+        /// Get a Monster using id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         // GET: /Monster/1
         [HttpGet("{id}")]

@@ -21,6 +21,12 @@ namespace WitcherAPI.Controllers
             _context.Database.EnsureCreated();
         }
 
+
+        /// <summary>
+        /// Get all characters
+        /// </summary>
+        /// <param name="queryParameters"></param>
+        /// <returns></returns>
         // GET: /Character
         [HttpGet]
         public async Task<IActionResult> GetAllCharacters([FromQuery] CharacterQueryParameters queryParameters)
@@ -58,21 +64,23 @@ namespace WitcherAPI.Controllers
 
             // when page is not set it takes negative value which will give error
             // So,when page is negative , send 15 characters
-            if(queryParameters.Page <=0)
-            {
-                characters = characters
-                    .Skip(0).Take(15);
-            }
-            else
+            if(queryParameters.Page >0)
             {
                 // using pagination
                 characters = characters
                     .Skip(queryParameters.Size * (queryParameters.Page - 1))
                     .Take(queryParameters.Size);
+
             }
+
             return Ok(await characters.ToArrayAsync());
         }
 
+        /// <summary>
+        /// Get a Character using  id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: /Character/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Character>> GetCharacter(int id)

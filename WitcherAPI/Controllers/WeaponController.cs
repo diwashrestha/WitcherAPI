@@ -19,6 +19,11 @@ namespace WitcherAPI.Controllers
             _context.Database.EnsureCreated();
         }
 
+        /// <summary>
+        /// Get all weapons
+        /// </summary>
+        /// <param name="queryParameters"></param>
+        /// <returns></returns>
         // GET: /Weapon
         [HttpGet]
         public async Task<IActionResult> GetAllWeapons([FromQuery] WeaponQueryParameters queryParameters)
@@ -55,12 +60,7 @@ namespace WitcherAPI.Controllers
                 }
             }
 
-            if(queryParameters.Page <= 0)
-            {
-                weapons = weapons
-                    .Skip(0).Take(15);
-            }
-            else
+            if(queryParameters.Page > 0)
             {
                 // using pagination
                 weapons = weapons
@@ -72,7 +72,11 @@ namespace WitcherAPI.Controllers
         }
 
 
-
+        /// <summary>
+        /// Get a Weapon using id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Weapon/2
         [HttpGet("{id}")]
         public async Task<ActionResult<Weapon>> GetWeapon(int id)
