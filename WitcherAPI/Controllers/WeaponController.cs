@@ -25,22 +25,34 @@ namespace WitcherAPI.Controllers
         {
             IQueryable<Weapon> weapons = _context.Weapons;
 
+            // search by name
             if(!string.IsNullOrEmpty(queryParameters.Name))
             {
                 weapons = weapons.Where(
                     w => w.Name.ToLower().Contains(queryParameters.Name.ToLower()));
             }
 
+            // filter by Type of weapons
             if(!string.IsNullOrEmpty(queryParameters.Type))
             {
                 weapons = weapons.Where(
                     w => w.Type == queryParameters.Type);
             }
 
+            // filter by category
             if(!string.IsNullOrEmpty(queryParameters.Category))
             {
                 weapons = weapons.Where(
                     w => w.Category == queryParameters.Category);
+            }
+
+
+            if(!string.IsNullOrEmpty(queryParameters.SortBy))
+            {
+                if(typeof(Weapon).GetProperty(queryParameters.SortBy)!= null)
+                {
+                    weapons = weapons.OrderByCustom(queryParameters.SortBy, queryParameters.SortOrder);
+                }
             }
 
             if(queryParameters.Page <= 0)

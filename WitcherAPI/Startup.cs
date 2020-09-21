@@ -34,11 +34,10 @@ namespace WitcherAPI
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Witcher API",
-                    Description = "A Rest API  for the Witcher 3 🕹Game .",
+                    Description = "A Rest API  for the Witcher 3 Game. You can get data about the character, monsters, weapons, armors in the game.",
                     Contact = new OpenApiContact
                     {
                         Name = "Diwash Shrestha",
-                        Email = "diwash.shrestha@outook.com",
                         Url = new Uri("http://diwashrestha.com.np/"),
                     }
                 });

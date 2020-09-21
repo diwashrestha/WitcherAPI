@@ -41,6 +41,13 @@ namespace WitcherAPI.Controllers
                     a => a.Name.ToLower().Contains(queryParameters.Name.ToLower()));
             }
 
+            if(!string.IsNullOrEmpty(queryParameters.SortBy))
+            {
+                if(typeof(Armor).GetProperty(queryParameters.SortBy)!= null)
+                {
+                    armors = armors.OrderByCustom(queryParameters.SortBy, queryParameters.SortOrder);
+                }
+            }
 
             if(queryParameters.Page <= 0)
             {
